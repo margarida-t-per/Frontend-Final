@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import style from "./style.module.scss";
 import MovieReviewForm from "../MovieReviewForm/MovieReviewForm";
+import MovieReviewSection from "../MovieReviewSection/MovieReviewSection";
 
 const MovieModal = ({ isOpen, onClose, trailerLink, movieId }) => {
   const [reviews, setReviews] = useState([]);
@@ -53,26 +54,12 @@ const MovieModal = ({ isOpen, onClose, trailerLink, movieId }) => {
           width="100%"
           height="100%"
         />
-
+        <MovieReviewSection reviews={reviews} />
         <MovieReviewForm
           movieId={movieId}
           userId="currentUserId"
           onReviewSubmit={handleReviewSubmit}
-          onDelete={handleDeleteMovie}
         />
-        <div className={style.reviewSection}>
-          <h3>Reviews</h3>
-          <ul className={style.reviewList}>
-            {reviews.map((review) => (
-              <li key={review._id} className={style.reviewItem}>
-                <p>
-                  <strong>Rating:</strong> {review.rating} stars
-                </p>
-                <p>Comment: {review.comment}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
       </div>
     </div>
   );

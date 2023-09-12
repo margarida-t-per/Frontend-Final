@@ -32,27 +32,23 @@ const MovieReviewForm = ({ movieId, userId, onReviewSubmit }) => {
     <div className={style.reviewForm}>
       <h3>Add a Review</h3>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="rating">Rating:</label>
-          <input
-            type="number"
-            id="rating"
-            value={rating}
-            min="1"
-            max="5"
-            onChange={handleRatingChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="comment">Comment:</label>
-          <textarea
-            id="comment"
-            value={comment}
-            onChange={handleCommentChange}
-            required
-          />
-        </div>
+        <label htmlFor="rating">Rating:</label>
+        <input
+          type="number"
+          id="rating"
+          value={rating}
+          min="1"
+          max="5"
+          onChange={handleRatingChange}
+          required
+        />
+        <label htmlFor="comment">Comment:</label>
+        <textarea
+          id="comment"
+          value={comment}
+          onChange={handleCommentChange}
+          required
+        />
         <button type="submit">Submit Review</button>
       </form>
     </div>

@@ -5,18 +5,23 @@ const AddMovieForm = () => {
     title: "",
     releaseDate: "",
     trailerLink: "",
-    posterUrl: "",
+    posterUrl: null,
     genres: [],
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, type, files } = e.target;
 
     if (name === "genres") {
       const genresArray = value.split(",").map((genre) => genre.trim());
       setFormData({
         ...formData,
         genres: genresArray,
+      });
+    } else if (type === "file") {
+      setFormData({
+        ...formData,
+        [name]: files[0],
       });
     } else {
       setFormData({
@@ -30,12 +35,16 @@ const AddMovieForm = () => {
     e.preventDefault();
 
     try {
+      const formDataForSubmission = new FormData();
+      formDataForSubmission.append("title", formData.title);
+      formDataForSubmission.append("releaseDate", formData.releaseDate);
+      formDataForSubmission.append("trailerLink", formData.trailerLink);
+      formDataForSubmission.append("genres", formData.genres.join(", "));
+      formDataForSubmission.append("posterUrl", formData.posterUrl);
+
       const response = await fetch("http://localhost:4050/api/movies", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+        body: formDataForSubmission,
       });
 
       if (response.ok) {
@@ -81,12 +90,11 @@ const AddMovieForm = () => {
         />
       </div>
       <div>
-        <label htmlFor="posterUrl">Poster URL:</label>
+        <label htmlFor="posterUrl">Poster:</label>
         <input
-          type="text"
+          type="file"
           id="posterUrl"
           name="posterUrl"
-          value={formData.posterUrl}
           onChange={handleChange}
         />
       </div>

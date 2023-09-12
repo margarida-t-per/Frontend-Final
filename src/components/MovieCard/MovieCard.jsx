@@ -51,14 +51,13 @@ const MovieCard = ({
   };
 
   return (
-    <div className={style.movieCard}>
-      <div
-        className={style.poster}
-        onClick={handleCardClick}
-        style={{
-          backgroundImage: `url(${poster})`,
-        }}
-      >
+    <div
+      className={style.movieCard}
+      style={{
+        backgroundImage: `url(${poster})`,
+      }}
+    >
+      <div className={style.poster} onClick={handleCardClick}>
         <div className={style.overlay}></div>
         <h3 className={style.name}>{name}</h3>
       </div>

@@ -4,8 +4,7 @@ import { AppProvider } from "./MyContext";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home/Home";
 import LoginPage from "./pages/Login/LoginPage";
-//import AllProjects from "./pages/AllProjects/AllProjects";
-//import ContactInfo from "./pages/ContactInfo/ContactInfo";
+import AddMovie from "./pages/AddMovie/AddMovie";
 import Footer from "./components/Footer/Footer";
 
 export default function App() {
@@ -15,16 +14,9 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/addmovie" element={<AddMovie />} />
       </Routes>
       <Footer />
     </AppProvider>
   );
 }
-
-/* 
-      <Routes>
-       <Route path="/" element={<Home />} />
-        <Route path="/projects" element={<AllProjects />} />
-        <Route path="/contact" element={<ContactInfo />} />
-      </Routes>
-*/

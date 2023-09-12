@@ -16,7 +16,6 @@ const MoviesList = () => {
 
   const handleCardClick = (trailerLink, movieId) => {
     setSelectedMovie({ trailerLink, movieId });
-    console.log("movie list:", selectedMovie);
   };
 
   const handleCloseModal = () => {
@@ -47,8 +46,7 @@ const MoviesList = () => {
             name={movie.title}
             releaseDate={new Date(movie.releaseDate).toLocaleDateString()}
             genres={movie.genres}
-            // poster={`http://localhost:4050/static/${movie.posterUrl}`}
-            poster="../assets/no-image.jpeg"
+            poster={movie.posterUrl}
             onClick={() => handleCardClick(movie.trailerLink, movie._id)}
             movieId={movie._id}
             onDelete={handleDeleteMovie}

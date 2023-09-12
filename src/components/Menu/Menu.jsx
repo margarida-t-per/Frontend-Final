@@ -4,6 +4,7 @@ import MenuItem from "../MenuItem/MenuItem";
 const menuItems = [
   { text: "Home", href: "/" },
   { text: "Login", href: "/login" },
+  { text: "Add Movie", href: "/addmovie" },
 ];
 
 const Menu = () => {
